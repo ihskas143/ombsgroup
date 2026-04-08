@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=home.html">
+    <script>window.location.replace('home.html');</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMBS Group - Builders & Superstructures</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +91 9136221008</span>
+                <span><i class="fas fa-envelope"></i> ombsgroup2018@gmail.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <div class="nav-logo">
+                <a href="#home">
+                    <img src="assets/logo.png" alt="OMBS Group Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#expertise" class="nav-link">Our Expertise</a></li>
+                <li><a href="#contact" class="nav-link contact-btn">Contact Us</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner Slider -->
+    <section class="slider-section" id="home">
+        <div class="slider" id="slider">
+            <div class="slide slide-1 active">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">OMBS Group</span>
+                    <h1>Building It Better<br>In Concrete.</h1>
+                    <p>When it comes to your house, don't mess with the rest, trust the best.<br>Making your vision come true, that is what we do.</p>
+                    <div class="slide-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#about" class="btn btn-outline">About Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">35 Years of Legacy</span>
+                    <h1>Ekam<br><small>V.N Purav Marg, Mumbai</small></h1>
+                    <p>A landmark development that redefines urban living in Mumbai.<br>Built with structural strength and thoughtful design.</p>
+                    <div class="slide-buttons">
+                        <a href="#projects" class="btn btn-primary">Explore Project</a>
+                        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide slide-3">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Navi Mumbai</span>
+                    <h1>The Gateway<br><small>Vashi, Navi Mumbai</small></h1>
+                    <p>Combining modern infrastructure with transparent processes,<br>ensuring customer satisfaction in every development.</p>
+                    <div class="slide-buttons">
+                        <a href="#projects" class="btn btn-primary">Explore Project</a>
+                        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slide slide-4">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">CBD Belapur</span>
+                    <h1>Antalya<br><small>CBD Belapur, Navi Mumbai</small></h1>
+                    <p>High-quality residential projects with modern infrastructure<br>designed to stand the test of time.</p>
+                    <div class="slide-buttons">
+                        <a href="#projects" class="btn btn-primary">Explore Project</a>
+                        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-btn prev" id="prevBtn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn next" id="nextBtn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Slider Dots -->
+        <div class="slider-dots" id="sliderDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container stats-inner">
+            <div class="stat-item">
+                <span class="stat-number" data-target="35">0</span>
+                <span class="stat-plus">+</span>
+                <span class="stat-label">Years of Legacy</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="20">0</span>
+                <span class="stat-plus">+</span>
+                <span class="stat-label">Landmark Projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="1000">0</span>
+                <span class="stat-plus">+</span>
+                <span class="stat-label">Happy Families</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="1">0</span>
+                <span class="stat-suffix">.5M</span>
+                <span class="stat-label">Sq. Ft. Developed</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <!-- Left: Image -->
+                <div class="about-image-col">
+                    <div class="about-image-wrapper">
+                        <div class="about-img-main">
+                            <div class="about-img-overlay">
+                                <div class="experience-badge">
+                                    <span class="badge-number">35</span>
+                                    <span class="badge-text">Years of<br>Experience</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-img-secondary"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="about-content-col">
+                    <div class="section-tag">About Company</div>
+                    <h2 class="section-title">Committed to Superior<br>Quality and Results.</h2>
+                    <div class="gold-line"></div>
+                    <p class="about-text">
+                        We specialize in delivering well-planned real estate solutions that meet modern lifestyle needs through thoughtful design, efficient execution, and consistent quality standards.
+                    </p>
+                    <p class="about-text">
+                        When it comes to your house, don't mess with the rest, trust the best. Making your vision come true, that is what we do — with over three decades of proven excellence in Navi Mumbai.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-building"></i></div>
+                            <div class="feature-text">
+                                <h4>Our Vision</h4>
+                                <p>To create landmark developments that redefine urban living in Navi Mumbai.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-hard-hat"></i></div>
+                            <div class="feature-text">
+                                <h4>Our Mission</h4>
+                                <p>To deliver high-quality residential projects with timely execution and transparent processes.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="feature-text">
+                                <h4>Our Philosophy</h4>
+                                <p>Construction is more than building structures — it is about shaping lifestyles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Our Work</div>
+                <h2 class="section-title">Our Projects</h2>
+                <div class="gold-line center"></div>
+            </div>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ongoing">Ongoing</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card" data-category="ongoing">
+                    <div class="project-img project-img-1"></div>
+                    <div class="project-info">
+                        <span class="project-tag">Ongoing</span>
+                        <h3>Antalya</h3>
+                        <p>Belapur, Navi Mumbai</p>
+                        <a href="#" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="ongoing">
+                    <div class="project-img project-img-2"></div>
+                    <div class="project-info">
+                        <span class="project-tag">Ongoing</span>
+                        <h3>Aurum</h3>
+                        <p>Ulwe, Navi Mumbai</p>
+                        <a href="#" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="completed">
+                    <div class="project-img project-img-3"></div>
+                    <div class="project-info">
+                        <span class="project-tag completed">Completed</span>
+                        <h3>The Gateway</h3>
+                        <p>Vashi, Navi Mumbai</p>
+                        <a href="#" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="completed">
+                    <div class="project-img project-img-4"></div>
+                    <div class="project-info">
+                        <span class="project-tag completed">Completed</span>
+                        <h3>Kshipra</h3>
+                        <p>Sanpada, Navi Mumbai</p>
+                        <a href="#" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="completed">
+                    <div class="project-img project-img-5"></div>
+                    <div class="project-info">
+                        <span class="project-tag completed">Completed</span>
+                        <h3>Montana</h3>
+                        <p>Ulwe, Navi Mumbai</p>
+                        <a href="#" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="upcoming">
+                    <div class="project-img project-img-6"></div>
+                    <div class="project-info">
+                        <span class="project-tag upcoming">Upcoming</span>
+                        <h3>Upcoming Project</h3>
+                        <p>Vashi, Navi Mumbai</p>
+                        <a href="#" class="project-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise-section" id="expertise">
+        <div class="container">
+            <div class="expertise-grid">
+                <div class="expertise-content">
+                    <div class="section-tag light">What We Serve</div>
+                    <h2 class="section-title light">Our Mission &<br>Site Areas</h2>
+                    <div class="gold-line"></div>
+                    <p class="expertise-text">
+                        We specialize in delivering well-planned real estate solutions that meet modern lifestyle needs through thoughtful design, efficient execution, and consistent quality standards.
+                    </p>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> Construction Management</li>
+                        <li><i class="fas fa-check-circle"></i> Pre Construction Services</li>
+                        <li><i class="fas fa-check-circle"></i> Contract Administration</li>
+                        <li><i class="fas fa-check-circle"></i> Implementation</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-gold">Get in Touch &nbsp; +91 9136221008</a>
+                </div>
+                <div class="expertise-cards">
+                    <div class="exp-card">
+                        <div class="exp-icon"><i class="fas fa-hard-hat"></i></div>
+                        <h4>Construction Management</h4>
+                        <p>Complete oversight of construction activities ensuring quality, safety, and timely delivery.</p>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h4>Pre Construction Services</h4>
+                        <p>Strategic planning, budgeting, and design coordination before breaking ground.</p>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-icon"><i class="fas fa-file-contract"></i></div>
+                        <h4>Contract Administration</h4>
+                        <p>Transparent management of all contracts ensuring compliance and accountability.</p>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-icon"><i class="fas fa-cogs"></i></div>
+                        <h4>Implementation</h4>
+                        <p>Flawless execution of project plans with modern tools and experienced teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Reach Us</div>
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="gold-line center"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>1701, Goodwill Excellency, 17th Floor,<br>Sector 17, Plot No. 2, Vashi,<br>Navi Mumbai - 400703</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>022-46019090<br>+91 9136221008</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>ombsgroup2018@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option value="">Interested In...</option>
+                            <option>Antalya - Belapur</option>
+                            <option>Aurum - Ulwe</option>
+                            <option>Gateway - Vashi</option>
+                            <option>Montana - Ulwe</option>
+                            <option>Upcoming Projects</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="assets/logo.png" alt="OMBS Group" class="footer-logo">
+                <p class="footer-desc">Building landmark developments that redefine urban living across Navi Mumbai with integrity, innovation, and excellence.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#expertise">Our Expertise</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 1701, Goodwill Excellency, 17th Floor, Sector 17, Plot No. 2, Vashi, Navi Mumbai - 400703</p>
+                    <p><i class="fas fa-phone"></i> 022-46019090 | +91 9136221008</p>
+                    <p><i class="fas fa-envelope"></i> ombsgroup2018@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 Ombsgroup. Designed By Brandastra</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

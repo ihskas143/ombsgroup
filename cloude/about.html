@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | OMBS Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #9A7A2E;
+    --charcoal: #1A1A1A;
+    --grey-900: #111111;
+    --grey-800: #1E1E1E;
+    --grey-700: #2A2A2A;
+    --grey-600: #3A3A3A;
+    --grey-400: #888888;
+    --grey-200: #D0D0D0;
+    --white: #FFFFFF;
+    --off-white: #F5F3EE;
+    --light-bg: #F8F7F4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--light-bg); color: var(--charcoal); overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--grey-200); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 80px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    transition: all 0.4s ease;
+  }
+  nav.scrolled { height: 68px; box-shadow: 0 4px 40px rgba(0,0,0,0.12); }
+  .nav-logo img { height: 52px; object-fit: contain; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--charcoal); position: relative; transition: color 0.3s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px; background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a.active { color: var(--gold); }
+  .nav-links a.active::after { width: 100%; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--gold); color: var(--white);
+    padding: 0.6rem 1.4rem; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.3s ease; border: 2px solid var(--gold);
+  }
+  .btn-primary:hover { background: transparent; color: var(--gold); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--charcoal); transition: all 0.3s; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    min-height: 60vh;
+    background: var(--grey-900);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 0 5%;
+  }
+  .page-hero-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .page-hero-accent {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), transparent);
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .page-hero-content {
+    position: relative; z-index: 2; max-width: 700px;
+    margin-top: 80px;
+  }
+  .breadcrumb {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.5rem;
+    opacity: 0; transform: translateY(15px);
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .breadcrumb span { color: rgba(255,255,255,0.2); }
+  .page-hero-eyebrow {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    opacity: 0; transform: translateY(15px);
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+  .page-hero-eyebrow::before { content: ''; width: 30px; height: 2px; background: var(--gold); }
+  .page-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700;
+    line-height: 1.1; color: var(--white);
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+  .page-hero-title em { color: var(--gold); font-style: italic; }
+  .page-hero-sub {
+    font-size: 0.95rem; font-weight: 300;
+    line-height: 1.8; color: rgba(255,255,255,0.5);
+    max-width: 500px; margin-top: 1.2rem;
+    opacity: 0; transform: translateY(15px);
+    animation: fadeUp 0.7s ease 0.7s forwards;
+  }
+  .experience-badge {
+    position: absolute; right: 8%; bottom: -2.5rem;
+    width: 120px; height: 120px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    box-shadow: 0 15px 50px rgba(201,168,76,0.45);
+    z-index: 10;
+    animation: fadeIn 1s ease 1s forwards; opacity: 0;
+  }
+  .badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--white); line-height: 1;
+  }
+  .badge-label {
+    font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.8); text-align: center;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5%; }
+  .section-eyebrow {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .section-eyebrow::before { content: ''; width: 30px; height: 2px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+    line-height: 1.15; color: var(--charcoal);
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  /* ── ABOUT MAIN ── */
+  .about-main {
+    background: var(--white);
+    padding-top: 7rem;
+    display: grid; grid-template-columns: 1.3fr 1fr;
+    gap: 6rem; align-items: center;
+  }
+  .about-main-content p {
+    font-size: 0.95rem; line-height: 1.9;
+    color: var(--grey-400); margin: 1.2rem 0;
+  }
+  .about-cta {
+    margin-top: 2rem;
+    display: flex; gap: 1rem;
+  }
+  .btn-gold-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: var(--gold);
+    padding: 0.8rem 2rem; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    border: 2px solid var(--gold); transition: all 0.3s;
+  }
+  .btn-gold-outline:hover { background: var(--gold); color: var(--white); }
+  .about-image-side {
+    position: relative;
+  }
+  .about-img-block {
+    width: 100%; height: 480px;
+    background: linear-gradient(135deg, var(--grey-700), var(--grey-900));
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; font-weight: 700;
+    color: rgba(201,168,76,0.15); overflow: hidden; position: relative;
+  }
+  .about-img-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 30px,
+      rgba(201,168,76,0.03) 30px, rgba(201,168,76,0.03) 31px
+    );
+  }
+  .gold-line {
+    position: absolute; left: -2rem; top: 4rem; bottom: 4rem;
+    width: 4px; background: var(--gold); border-radius: 2px;
+  }
+
+  /* ── VALUES ── */
+  .values-section { background: var(--light-bg); }
+  .values-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; margin-top: 3rem;
+  }
+  .value-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 4px;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+    position: relative; overflow: hidden;
+  }
+  .value-card::before {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at bottom right, rgba(201,168,76,0.08), transparent 70%);
+  }
+  .value-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+  .value-icon {
+    width: 50px; height: 50px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.5rem;
+  }
+  .value-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--charcoal); margin-bottom: 0.8rem;
+  }
+  .value-text { font-size: 0.85rem; line-height: 1.8; color: var(--grey-400); }
+
+  /* ── TEAM ── */
+  .team-section { background: var(--grey-900); }
+  .team-section .section-title { color: var(--white); }
+  .team-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; margin-top: 3rem;
+  }
+  .team-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px; overflow: hidden;
+    transition: all 0.4s ease; cursor: default;
+  }
+  .team-card:hover {
+    background: rgba(201,168,76,0.04);
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-6px);
+  }
+  .team-img {
+    height: 280px;
+    background: linear-gradient(135deg, var(--grey-700), var(--grey-800));
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .team-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 700;
+    color: rgba(201,168,76,0.25); line-height: 1;
+    z-index: 1; position: relative;
+  }
+  .team-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  }
+  .team-body { padding: 1.8rem; }
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.2rem;
+  }
+  .team-role {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+  }
+  .team-bio { font-size: 0.8rem; line-height: 1.7; color: rgba(255,255,255,0.45); }
+
+  /* ── STATS ── */
+  .stats-section {
+    background: linear-gradient(135deg, var(--grey-900), var(--grey-800));
+    padding: 5rem 5%;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    position: relative; overflow: hidden;
+  }
+  .stats-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      90deg, transparent, transparent 24%,
+      rgba(201,168,76,0.04) 24%, rgba(201,168,76,0.04) 25%
+    );
+  }
+  .stat-card {
+    padding: 3rem 2rem; text-align: center;
+    border-right: 1px solid rgba(201,168,76,0.1);
+    position: relative; z-index: 1;
+    transition: background 0.3s;
+  }
+  .stat-card:last-child { border-right: none; }
+  .stat-card:hover { background: rgba(201,168,76,0.05); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-unit { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--gold-light); }
+  .stat-label {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); margin-top: 0.5rem;
+  }
+
+  /* ── AWARDS ── */
+  .awards-section { background: var(--white); }
+  .awards-header { margin-bottom: 3rem; }
+  .awards-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .award-card {
+    padding: 2rem; text-align: center;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .award-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.1);
+  }
+  .award-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .award-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem;
+  }
+  .award-body { font-size: 0.75rem; color: var(--grey-400); line-height: 1.6; }
+
+  /* ── CONTACT CTA ── */
+  .contact-strip {
+    background: var(--gold); padding: 4rem 5%;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 3rem; align-items: center;
+  }
+  .contact-strip-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--white);
+  }
+  .contact-strip-sub { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+  .btn-white {
+    background: var(--white); color: var(--gold);
+    padding: 1rem 2.5rem; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    white-space: nowrap; transition: all 0.3s;
+  }
+  .btn-white:hover { background: var(--grey-900); color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--grey-900);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 4rem 5% 2rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-logo { height: 48px; margin-bottom: 1rem; filter: brightness(0) invert(1); }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-style: italic; color: var(--gold-light); margin-bottom: 1rem;
+  }
+  .footer-desc { font-size: 0.8rem; line-height: 1.8; color: rgba(255,255,255,0.4); }
+  .footer-heading {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: color 0.3s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .footer-links a::before { content: '→'; color: var(--gold); font-size: 0.65rem; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-contact-item {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    margin-bottom: 0.8rem; line-height: 1.6;
+  }
+  .footer-contact-icon { color: var(--gold); flex-shrink: 0; }
+  .footer-divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 1.5rem; }
+  .footer-bottom {
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+  .footer-copy span { color: var(--gold); }
+  .social-links { display: flex; gap: 0.7rem; }
+  .social-link {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    font-size: 0.8rem; transition: all 0.3s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.1); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* Mobile overlay */
+  .mobile-overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: var(--grey-900); transform: translateX(100%);
+    transition: transform 0.4s ease; padding: 2rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .mobile-overlay.open { transform: translateX(0); }
+  .mobile-nav-links { list-style: none; }
+  .mobile-nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-nav-links a {
+    display: block; padding: 1.2rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600;
+    color: var(--white); text-decoration: none; transition: color 0.3s;
+  }
+  .mobile-nav-links a:hover { color: var(--gold); }
+
+  @media (max-width: 1024px) {
+    .about-main { grid-template-columns: 1fr; padding-top: 5rem; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .stats-section { grid-template-columns: repeat(2, 1fr); }
+    .awards-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, nav .btn-primary { display: none; }
+    .hamburger { display: flex; }
+    .values-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .awards-grid { grid-template-columns: 1fr 1fr; }
+    .contact-strip { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .experience-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileMenu">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html" onclick="closeMobile()">Home</a></li>
+    <li><a href="about.html" onclick="closeMobile()">About Us</a></li>
+    <li><a href="index.html#projects" onclick="closeMobile()">Projects</a></li>
+    <li><a href="index.html#expertise" onclick="closeMobile()">Our Expertise</a></li>
+    <li><a href="#contact" onclick="closeMobile()">Contact Us</a></li>
+  </ul>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="OMBS_logo_neww.png" alt="OMBS Group" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gold)">OMBS<span style="color:var(--charcoal);font-size:0.9rem;font-weight:400;margin-left:4px">GROUP</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#expertise">Our Expertise</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+  <a href="tel:+919136221008" class="btn-primary" style="font-size:0.72rem;padding:0.6rem 1.4rem">+91 91362 21008</a>
+  <div class="hamburger" onclick="toggleMobile()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-accent"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>About Us</div>
+    <div class="page-hero-eyebrow">Our Story</div>
+    <h1 class="page-hero-title">About<br><em>OMBS Group</em></h1>
+    <p class="page-hero-sub">Improving quality of life with an integrated unified approach — 35 years of building trust in Navi Mumbai.</p>
+  </div>
+  <div class="experience-badge">
+    <div class="badge-num">35</div>
+    <div class="badge-label">Years of<br>Experience</div>
+  </div>
+</div>
+
+<!-- ABOUT MAIN -->
+<section class="about-main">
+  <div class="about-main-content reveal-left">
+    <div class="section-eyebrow">About Company</div>
+    <h2 class="section-title"><em>Improving Quality</em> of Life With an Integrated Unified Approach</h2>
+    <p>We specialize in delivering well-planned real estate solutions that meet modern lifestyle needs through thoughtful design, efficient execution, and consistent quality standards.</p>
+    <p>When it comes to your house, don't mess with the rest, trust the best. Making your vision come true, that is what we do. With every project, we bring decades of experience, modern methodology, and genuine commitment to excellence.</p>
+    <p>Our legacy spans 35 years of landmark developments across Navi Mumbai. Each project represents our philosophy: that construction is not just about buildings — it is about shaping lifestyles and building communities.</p>
+    <div class="about-cta">
+      <a href="tel:+919136221008" class="btn-primary">Get in Touch →</a>
+      <a href="index.html#projects" class="btn-gold-outline">View Projects</a>
+    </div>
+  </div>
+  <div class="about-image-side reveal-right">
+    <div class="gold-line"></div>
+    <div class="about-img-block">OMBS</div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div style="text-align:center;max-width:600px;margin:0 auto 1rem">
+    <div class="section-eyebrow" style="justify-content:center">Our Foundation</div>
+    <h2 class="section-title">Vision, Mission<br>&amp; <em>Philosophy</em></h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal" style="transition-delay:0.1s">
+      <div class="value-icon">🔭</div>
+      <div class="value-title">Our Vision</div>
+      <p class="value-text">To create landmark developments that redefine urban living in Navi Mumbai. We aim to build spaces that combine structural strength, thoughtful design, and long-term value for generations to come.</p>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.2s">
+      <div class="value-icon">🎯</div>
+      <div class="value-title">Our Mission</div>
+      <p class="value-text">To deliver high-quality residential projects with timely execution, modern infrastructure, and transparent processes — ensuring customer satisfaction and lasting trust in every development.</p>
+    </div>
+    <div class="value-card reveal" style="transition-delay:0.3s">
+      <div class="value-icon">💎</div>
+      <div class="value-title">Our Philosophy</div>
+      <p class="value-text">We believe construction is more than building structures — it is about shaping lifestyles. With integrity, innovation, and customer-first values, we create homes that stand the test of time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div style="text-align:center;margin-bottom:1rem">
+    <div class="section-eyebrow" style="justify-content:center;color:var(--gold-light)">The People Behind It</div>
+    <h2 class="section-title">Our <em>Leadership</em> Team</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal" style="transition-delay:0.1s">
+      <div class="team-img">
+        <div class="team-initials">PM</div>
+      </div>
+      <div class="team-body">
+        <div class="team-name">Pramod More</div>
+        <div class="team-role">CEO & Founder</div>
+        <p class="team-bio">Founder of Om Developers, Pramod More is a former Joint Treasurer of the Builders Association of Navi Mumbai. With strong entrepreneurial vision, he has played a key role in shaping quality residential developments across Navi Mumbai.</p>
+      </div>
+    </div>
+    <div class="team-card reveal" style="transition-delay:0.2s">
+      <div class="team-img" style="background:linear-gradient(135deg,#1a2a3a,#2d4060)">
+        <div class="team-initials">RM</div>
+      </div>
+      <div class="team-body">
+        <div class="team-name">Roshan More</div>
+        <div class="team-role">Director – Operations</div>
+        <p class="team-bio">Roshan More leads the company's growth as a strong real estate brand. With experience in mid-sized residential developments, he brings strategic planning backed by engineering and management expertise.</p>
+      </div>
+    </div>
+    <div class="team-card reveal" style="transition-delay:0.3s">
+      <div class="team-img" style="background:linear-gradient(135deg,#1a3a2a,#2d6040)">
+        <div class="team-initials">AM</div>
+      </div>
+      <div class="team-body">
+        <div class="team-name">Akash More</div>
+        <div class="team-role">Director – Project Management</div>
+        <p class="team-bio">A second-generation leader at Om Builders, Akash More focuses on structured project execution and modern management practices. He brings global education and fresh perspectives to drive efficient project delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stat-card">
+    <div class="stat-num"><span class="counter" data-target="35">0</span></div>
+    <div class="stat-label">Years of Legacy</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num"><span class="counter" data-target="20">0</span></div>
+    <div class="stat-label">Landmark Projects</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num"><span class="counter" data-target="1000">0</span></div>
+    <div class="stat-label">Happy Families</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-num"><span class="counter" data-target="1">0</span><span class="stat-unit">.5M+</span></div>
+    <div class="stat-label">Sq. Ft. Delivered</div>
+  </div>
+</div>
+
+<!-- AWARDS -->
+<section class="awards-section">
+  <div class="awards-header reveal">
+    <div class="section-eyebrow">Recognitions</div>
+    <h2 class="section-title">Recognitions That <em>Inspire</em></h2>
+    <p style="font-size:0.9rem;color:var(--grey-400);margin-top:0.8rem">As a leading real estate group, we have always strived for the best.</p>
+  </div>
+  <div class="awards-grid">
+    <div class="award-card reveal" style="transition-delay:0.1s">
+      <div class="award-icon">🏆</div>
+      <div class="award-title">Best Builder Award</div>
+      <div class="award-body">Recognized for excellence in residential construction by Navi Mumbai Builders Association</div>
+    </div>
+    <div class="award-card reveal" style="transition-delay:0.2s">
+      <div class="award-icon">⭐</div>
+      <div class="award-title">Quality Excellence</div>
+      <div class="award-body">Awarded for superior structural quality and timely delivery across multiple projects</div>
+    </div>
+    <div class="award-card reveal" style="transition-delay:0.3s">
+      <div class="award-icon">🏅</div>
+      <div class="award-title">Customer Trust Award</div>
+      <div class="award-body">Celebrated for highest customer satisfaction scores and transparent processes</div>
+    </div>
+    <div class="award-card reveal" style="transition-delay:0.4s">
+      <div class="award-icon">🌟</div>
+      <div class="award-title">Legacy Builder</div>
+      <div class="award-body">Honored for 35 years of consistent contribution to Navi Mumbai's skyline</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<div class="contact-strip" id="contact">
+  <div>
+    <div class="contact-strip-title">Let's Build Something Great Together</div>
+    <div class="contact-strip-sub">1701, Goodwill Excellency, 17th Floor, Sector 17, Plot No. 2, Vashi, Navi Mumbai – 400703</div>
+  </div>
+  <a href="tel:+919136221008" class="btn-white">Call Us Now</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="OMBS_logo_neww.png" alt="OMBS" class="footer-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem">OMBS GROUP</div>
+      <div class="footer-tagline">Value | Trust | Experience</div>
+      <p class="footer-desc">Building landmark developments across Navi Mumbai since 1988. Committed to quality, trust, and lasting value.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Useful Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Projects</div>
+      <ul class="footer-links">
+        <li><a href="#">Antalya – Belapur</a></li>
+        <li><a href="#">Aurum – Ulwe</a></li>
+        <li><a href="#">The Gateway – Vashi</a></li>
+        <li><a href="#">Kshipra – Sanpada</a></li>
+        <li><a href="#">Montana – Ulwe</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contact Us</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>1701, Goodwill Excellency, 17th Floor, Sector 17, Plot No. 2, Vashi, Navi Mumbai – 400703</span></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>022-46019090 / +91 91362 21008</span></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><span>ombsgroup2018@gmail.com</span></div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>OMBS Group</span>. Designed by <span>Brandastra</span></div>
+    <div class="social-links">
+      <a href="#" class="social-link">f</a>
+      <a href="#" class="social-link">in</a>
+      <a href="#" class="social-link">ig</a>
+      <a href="#" class="social-link">yt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+  function toggleMobile() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        let current = 0; const inc = target / 60;
+        const timer = setInterval(() => {
+          current += inc;
+          if (current >= target) { el.textContent = target; clearInterval(timer); }
+          else el.textContent = Math.floor(current);
+        }, 25);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
